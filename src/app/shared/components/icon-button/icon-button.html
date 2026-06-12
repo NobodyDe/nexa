@@ -1,0 +1,8 @@
+<button
+  class="flex gap-2 hover:bg-[#141414] p-3 rounded-3xl cursor-pointer"
+  type="button"
+  (click)="clicked.emit()"
+>
+  <svg [lucideIcon]="icon()"></svg>
+  <span>{{ label() }}</span>
+</button>

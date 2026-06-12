@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'tailwindcss';
+
+html,
+body {
+  height: 100%; /* Resolve a corrente de alturas */
+  font-family: 'Inter', sans-serif; /* Aplica a fonte globalmente */
+  color: #ffffff; /* Cor da fonte branca herdada por todos */
+}

@@ -1,0 +1,3 @@
+@for (post of posts; track post.username) {
+  <app-post [profilePic]="post.profilePic" [user]="post.user" [username]="post.username"></app-post>
+}
