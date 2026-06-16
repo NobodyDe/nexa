@@ -10,13 +10,13 @@
   class="mt-auto flex cursor-pointer items-center gap-2 rounded-4xl p-3 text-center hover:bg-[#141414]"
 >
   <img
-    [src]="user.profilePic"
-    [alt]="'Foto de perfil de ' + user.name"
+    [src]="user().profilePic"
+    [alt]="'Foto de perfil de ' + user().name"
     class="h-10 w-10 rounded-full object-cover ring-2 ring-zinc-200"
   />
 
   <div class="flex flex-col">
-    <span class="text-start font-semibold">{{ user.name }}</span>
-    <span class="font-thin text-[#434343]">{{ user.profileName }}</span>
+    <span class="text-start font-semibold">{{ user().name }}</span>
+    <span class="font-thin text-[#434343]">{{ user().profileName }}</span>
   </div>
 </div>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Post } from '../../../../shared/components/post/post';
+import { NewPost } from '../../../../shared/components/new-post/new-post';
 
 export interface postsProps {
   profilePic: string;
@@ -10,7 +11,7 @@ export interface postsProps {
 
 @Component({
   selector: 'app-posts',
-  imports: [Post],
+  imports: [Post, NewPost],
   templateUrl: './posts.html',
   styleUrl: './posts.css',
 })
