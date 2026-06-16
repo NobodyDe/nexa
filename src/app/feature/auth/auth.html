@@ -1,1 +1,21 @@
-<p>auth works!</p>
+<section class="flex w-screen h-screen">
+  <section class="flex w-1/2 justify-center">
+    <main class="w-full flex flex-col max-w-[360px] justify-center">
+      @switch (step()) {
+        @case ('email') {
+          <app-auth-email-step class="flex w-full justify-center"></app-auth-email-step>
+        }
+        @case ('login') {
+          <app-auth-login-step class="flex w-full justify-center"></app-auth-login-step>
+        }
+        @case ('register') {
+          <app-auth-register-step class="flex w-full justify-center"></app-auth-register-step>
+        }
+        @default {
+          <app-auth-email-step class="flex w-full justify-center"></app-auth-email-step>
+        }
+      }
+    </main>
+  </section>
+  <app-aside class="flex w-1/2"></app-aside>
+</section>

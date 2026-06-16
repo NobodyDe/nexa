@@ -1,0 +1,12 @@
+<button
+  [ngClass]="{
+    'bg-gray-800 text-gray-500 cursor-default': isDisable(),
+    'bg-white text-black hover:bg-gray-100 cursor-pointer': !isDisable(),
+  }"
+  class="w-full rounded-full py-3 px-6 font-bold text-[15px] mt-3 mb-5 transition-colors"
+  (click)="handleClick()"
+  [disabled]="isDisable()"
+  [type]="type() ?? 'button'"
+>
+  <span>{{ label() }}</span>
+</button>

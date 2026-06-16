@@ -1,0 +1,93 @@
+<svg #svgRef viewBox="0 0 600 600" class="letter-svg" aria-hidden="true">
+  <defs>
+    <radialGradient id="baseAmbient" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="white" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="white" stop-opacity="0.06" />
+    </radialGradient>
+    <radialGradient id="bevelDim" cx="48%" cy="47%" r="55%">
+      <stop offset="0%" stop-color="white" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="white" stop-opacity="0.02" />
+    </radialGradient>
+    <radialGradient
+      id="cursorGlow"
+      [attr.cx]="glowPos.x"
+      [attr.cy]="glowPos.y"
+      r="260"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop offset="0%" stop-color="white" stop-opacity="1" />
+      <stop offset="12%" stop-color="white" stop-opacity="0.85" />
+      <stop offset="35%" stop-color="white" stop-opacity="0.3" />
+      <stop offset="65%" stop-color="white" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="white" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient
+      id="cursorShimmer"
+      [attr.cx]="glowPos.x"
+      [attr.cy]="glowPos.y"
+      r="120"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop offset="0%" stop-color="white" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="white" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <text
+    x="308"
+    y="308"
+    dominant-baseline="central"
+    text-anchor="middle"
+    font-size="510"
+    font-weight="900"
+    font-family="'Arial Black','Impact',sans-serif"
+    fill="none"
+    stroke="url(#bevelDim)"
+    stroke-width="1.5"
+    stroke-linejoin="round"
+  >
+    N
+  </text>
+  <text
+    x="300"
+    y="300"
+    dominant-baseline="central"
+    text-anchor="middle"
+    font-size="520"
+    font-weight="900"
+    font-family="'Arial Black','Impact',sans-serif"
+    fill="none"
+    stroke="url(#baseAmbient)"
+    stroke-width="2"
+    stroke-linejoin="round"
+  >
+    N
+  </text>
+  <text
+    x="300"
+    y="300"
+    dominant-baseline="central"
+    text-anchor="middle"
+    font-size="520"
+    font-weight="900"
+    font-family="'Arial Black','Impact',sans-serif"
+    fill="url(#cursorShimmer)"
+    stroke="none"
+  >
+    N
+  </text>
+  <text
+    x="300"
+    y="300"
+    dominant-baseline="central"
+    text-anchor="middle"
+    font-size="520"
+    font-weight="900"
+    font-family="'Arial Black','Impact',sans-serif"
+    fill="none"
+    stroke="url(#cursorGlow)"
+    stroke-width="2.5"
+    stroke-linejoin="round"
+  >
+    N
+  </text>
+</svg>
