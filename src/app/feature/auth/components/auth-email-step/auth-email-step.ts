@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, output, signal } from '@angular/core';
 import { LucideApple, LucidePhone } from '@lucide/angular';
 import { Field } from '../../../../shared/components/field/field';
 import { ContinueButton } from '../../../../shared/components/continue-button/continue-button';
@@ -11,7 +11,9 @@ import { ContinueButton } from '../../../../shared/components/continue-button/co
 })
 export class AuthEmailStep {
   email = signal('');
+
   canContinue = computed(() => this.email().trim().length > 0);
+  continue = output<string>();
 
   setEmail(value: string) {
     this.email.set(value);
@@ -20,6 +22,6 @@ export class AuthEmailStep {
     console.log(event);
   }
   onContinue() {
-    console.log('hello word');
+    this.continue.emit(this.email());
   }
 }

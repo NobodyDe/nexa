@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Aside } from './components/aside/aside';
 import { AuthEmailStep } from './components/auth-email-step/auth-email-step';
 import { AuthLoginStep } from './components/auth-login-step/auth-login-step';
@@ -14,4 +14,18 @@ import { AuthFacade } from '../../core/services/AuthFacade';
 export class Auth {
   private facade = inject(AuthFacade);
   readonly step = this.facade.step;
+  email = signal('');
+  password = signal('');
+
+  onEmailContinue(email: string) {
+    this.email.set(email);
+    this.facade.submitEmail(this.email());
+  }
+
+  onPasswordContinue(password: string) {
+    this.facade.submitLogin({
+      email: this.email(),
+      password,
+    });
+  }
 }
