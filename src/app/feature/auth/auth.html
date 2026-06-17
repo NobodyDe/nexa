@@ -3,10 +3,17 @@
     <main class="w-full flex flex-col max-w-[360px] justify-center">
       @switch (step()) {
         @case ('email') {
-          <app-auth-email-step class="flex w-full justify-center"></app-auth-email-step>
+          <app-auth-email-step
+            (continue)="onEmailContinue($event)"
+            class="flex w-full justify-center"
+          ></app-auth-email-step>
         }
         @case ('login') {
-          <app-auth-login-step class="flex w-full justify-center"></app-auth-login-step>
+          <app-auth-login-step
+            [email]="email()"
+            (continue)="onPasswordContinue($event)"
+            class="flex w-full justify-center"
+          ></app-auth-login-step>
         }
         @case ('register') {
           <app-auth-register-step class="flex w-full justify-center"></app-auth-register-step>

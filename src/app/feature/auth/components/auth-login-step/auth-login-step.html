@@ -1,1 +1,28 @@
-<p>auth-login-step works!</p>
+<div class="w-full">
+  <button
+    class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-8 text-sm"
+  >
+    <svg lucideArrowLeft class="w-5 h-5 text-gray-400"></svg>
+    Voltar
+  </button>
+  <h1 class="text-[28px] mb-2 leading-tight font-black">Insira sua senha</h1>
+  <div
+    class="inline-flex items-center gap-2 bg-gray-900 border border-gray-700 rounded-full px-4 py-1.5 mb-8"
+  >
+    <div
+      class="w-5 h-5 rounded-full bg-gray-600 flex items-center justify-center text-[10px] font-black"
+    >
+      {{ email()[0]?.toUpperCase() }}
+    </div>
+    <span className="text-sm text-gray-300">{{ email() }}</span>
+  </div>
+  <app-password-field
+    placeholder="Senha"
+    [value]="password()"
+    (valueChange)="setPassword($event)"
+  />
+  <app-continue-button label="Entrar" [isDisable]="!canContinue()" (clicked)="onContinue()" />
+  <div class="text-center">
+    <a href="#" class="text-blue-400 hover:underline text-sm"> Esqueceu a senha? </a>
+  </div>
+</div>
