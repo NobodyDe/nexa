@@ -1,10 +1,12 @@
 <div class="flex w-full max-w-xl border-b border-gray-800 bg-black p-4">
   <div class="mr-3 shrink-0">
-    <img
-      [src]="user().profilePic"
-      [alt]="'Foto de perfil de ' + user().name"
-      class="h-10 w-10 rounded-full object-cover"
-    />
+    @if (user(); as u) {
+      <img
+        [src]="u.profilePic"
+        [alt]="'Foto de perfil de ' + u.name"
+        class="h-10 w-10 rounded-full object-cover"
+      />
+    }
   </div>
 
   <div class="flex w-full flex-col pt-1">

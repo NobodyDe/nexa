@@ -1,20 +1,14 @@
+import { AccessTokenPayload } from './../models/auth.model';
 import { Injectable } from '@angular/core';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TokenService {
-  decodePayload<T>(token: string): T | null {
+  decodeToken(token: string): AccessTokenPayload | null {
     try {
-      const [, payload] = token.split('.');
-
-      if (!payload) {
-        return null;
-      }
-
-      const base64 = payload.replace(/-/g, '+').replace(/_/g, '/');
-      const json = atob(base64);
-      return JSON.parse(json) as T;
+      return jwtDecode<AccessTokenPayload>(token);
     } catch {
       return null;
     }

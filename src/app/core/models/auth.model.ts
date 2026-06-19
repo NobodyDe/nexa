@@ -9,9 +9,10 @@ export interface LoginRequest {
 
 export interface AccessTokenPayload {
   sub: string;
-  name: string;
-  profileName: string;
-  profilePic: string;
+  username: string;
+  profile_name: string;
+  image_url: string;
+  description: string;
   email: string;
   iat: number;
   exp: number;
