@@ -2,17 +2,17 @@ import { inject, Injectable, signal } from '@angular/core';
 import { AuthApiService } from './auth-api-service';
 import { finalize, take } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import { CookieService } from '../cookies/CookieService';
 import { TokenService } from '../cookies/TokenService';
 import { UserService } from './user';
-import { AccessTokenPayload } from '../models/auth.model';
+import Cookies from 'js-cookie';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthFacade {
   private api = inject(AuthApiService);
-  private cookieService = inject(CookieService);
   private tokenService = inject(TokenService);
   private userService = inject(UserService);
+  private router = inject(Router);
 
   step = signal<'email' | 'login' | 'register'>('email');
   loading = signal(false);
@@ -51,7 +51,10 @@ export class AuthFacade {
         finalize(() => this.loading.set(false)),
       )
       .subscribe({
-        next: () => {},
+        next: () => {
+          this.loadUserFromAccessToken();
+          this.router.navigate(['/home']);
+        },
         error: (err: HttpErrorResponse) => {
           this.error.set('Credencial invalida, tente novamente.');
           this.loading.set(false);
@@ -59,14 +62,15 @@ export class AuthFacade {
       });
   }
   loadUserFromAccessToken(): void {
-    const accessToken = this.cookieService.get('accessToken');
+    const accessToken = Cookies.get('access_token');
 
     if (!accessToken) {
+      console.log('cookie não encontrado');
       this.userService.clearUser();
       return;
     }
 
-    const payload = this.tokenService.decodePayload<AccessTokenPayload>(accessToken);
+    const payload = this.tokenService.decodeToken(accessToken);
 
     if (!payload) {
       this.userService.clearUser();
@@ -74,9 +78,11 @@ export class AuthFacade {
     }
 
     this.userService.updateUser({
-      name: payload.name,
-      profileName: payload.profileName,
-      profilePic: payload.profilePic,
+      name: payload.username,
+      profileName: payload.profile_name,
+      profilePic: payload.image_url,
+      description: payload.description,
+      email: payload.email,
     });
   }
 }
